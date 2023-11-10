@@ -1,12 +1,10 @@
 #include <stdio.h>
 
+#ifndef HANGMAN
+#define HANGMAN
 int hangman(int stage);
+#endif
 
-int main() {
-	// changestage
-	int stage = 7;
-	hangman(stage);
-}
 
 int hangman(int stage) {
 	if(stage == 7) {
