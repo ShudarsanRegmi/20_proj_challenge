@@ -42,7 +42,6 @@ int main() {
 
     int genedRanNo;
 
-    /* hangman(7); */
     srand(time(NULL));
     /* printf("%d\n",genRandomNumber(MAX)); */
 
@@ -50,13 +49,13 @@ int main() {
 
     while (wannaPlay) {
 		int foundIndices[10];
-        int stage = 1;
+        int stage = 0;
         genedRanNo = genRandomNumber(MAX);
         char * chosenWord = words[genedRanNo]; // this is a string pointer; this is immutable
+        /* char *chosenWord = "WATERMELON"; // temporary */
         printf("Chosen word: %s\n", chosenWord);
-        /* char *chosenWord = "APPLEPPPOO"; // temporary */
         int lengthOfRandomWord = strlen(chosenWord);
-        printf("Length of Random Word = %d\n", lengthOfRandomWord);
+        /* printf("Length of Random Word = %d\n", lengthOfRandomWord); */
         int * mainIndices = malloc(sizeof(int) * lengthOfRandomWord);
         // initializing maijnIndices with -1
         for (int i = 0; i < lengthOfRandomWord; i++) {
@@ -65,40 +64,56 @@ int main() {
         int * lastIndex = malloc(sizeof(int));
         * lastIndex = 0;
         int noOfGusses = 0;
+
+
+		printf("\033[H\033[J");
+		hangman(stage);
+		outputPrinter(chosenWord, mainIndices);
         while (1) {
-            printf("\n---------------------BEGIN-FOR-A-WORD-------------------\n");
+            /* printf("\n---------------------BEGIN-FOR-A-WORD-------------------\n"); */
             char chosenChar = takeLetterInput();
 
             /* int x = checkChar(chosenWord,chosenChar); */
             int * x = checkChar(chosenChar, chosenWord);
 
-            printf("Welcome back to main function \n: ");
+            /* printf("Welcome back to main function \n: "); */
 				
             int numberOfMatches = x[0] - 1;
             if (numberOfMatches == 0) {
-                printf("Incorrect guess!! \n");
-                printf("Stage = %d\n", ++stage);
+                /* printf("Incorrect guess!! \n"); */
+                /* printf("Stage = %d\n", stage++); */
+				stage++;
                 /* hangman(7); */
 
             }
-		hangman(stage);
-            for (int i = 1; i <= numberOfMatches; i++) {
-                printf("%d\t", x[i]);
-            }
-            printf("\n");
+
+            /* for (int i = 1; i <= numberOfMatches; i++) { */
+            /*     printf("%d\t", x[i]); */
+            /* } */
+            /* printf("\n"); */
 
             addNewIndicesToMainIndices(mainIndices, lengthOfRandomWord, lastIndex, x, numberOfMatches);
 
-            printf("\nIterating through the main list indices\n");
-            for (int i = 0; i < lengthOfRandomWord; i++) {
-                printf("%d\t", mainIndices[i]);
-            }
-            printf("\n");
-            outputPrinter(chosenWord, mainIndices);
+            /* printf("\nIterating through the main list indices\n"); */
+
+            /* for (int i = 0; i < lengthOfRandomWord; i++) { */
+            /*     printf("%d\t", mainIndices[i]); */
+            /* } */
+
+            /* printf("\n"); */
+
+
+			// not sure if ths works in windows 
+			printf("\033[H\033[J");
+			hangman(stage);
+			outputPrinter(chosenWord, mainIndices);
 
 
             if (checkCorrectGuess(mainIndices, lengthOfRandomWord)) {
-                printf("Hurray!!!!!  the answer is correct.....\n");
+				printf("\n-----------------------------------\n\n");
+                printf("Hurray!!!!!  the answer is correct !!!\n");
+				printf("\n-----------------------------------\n\n");
+
                 Score = Score + 10;
                 gameOver(Score);
                 break;
@@ -108,6 +123,7 @@ int main() {
             if (stage == 7) {
                 Score = Score - 10;
                 gameOver(Score);
+				printf("The Correct Answer was: %s\n",chosenWord);
                 break;
 			}
 
@@ -122,7 +138,7 @@ int main() {
 		}else{
 			free(mainIndices);
 			free(lastIndex);
-			printf("Memory freed..");
+			/* printf("Memory freed.."); */
 		}
 	}
 // outer while loop close

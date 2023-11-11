@@ -7,6 +7,7 @@ int hangman(int stage);
 
 
 int hangman(int stage) {
+
 	if(stage == 7) {
 		printf("------------\n");
 		printf("\t   |\n");
@@ -14,6 +15,9 @@ int hangman(int stage) {
 	}
 
 	printf("\t ______\n");
+	if(stage==0) {
+		return 0;
+	}
 	printf("\t/      \\\n");
 	printf("\t \\____/\n");
 	if (stage == 1) {
