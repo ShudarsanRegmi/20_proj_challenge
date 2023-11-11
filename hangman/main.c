@@ -15,8 +15,6 @@ int main() {
 	int Score = 0;	
 	char *words[] = { "APPLE", "ORANGE", "BANANA", "STRAWBERRY", "GRAPE", "MELON", "WATERMELON", "PEACH", "NECTARINE", "PLUM", "CHERRY", "MANGO", "KIWI", "PINEAPPLE", "AVOCADO", "LEMON", "LIME", "ORANGE", "GRAPEFRUIT", "TRANGERINE", "CLEMENTINE"};
 
-
-	char *dynamicArray;
 	/* char *words[50] = {"ram","shyam","\0"}; */
 
 	int genedRanNo;
@@ -33,9 +31,11 @@ int main() {
 	foundIndices[3] = 4;
 
 	while (wannaPlay) {
+		int stage = 0;
 		genedRanNo = genRandomNumber(MAX);
-		// char *chosenWord = words[genedRanNo]; // this is a string pointer; this is immutable
-		char *chosenWord = "APPLEPPPOO"; // temporary
+		char *chosenWord = words[genedRanNo]; // this is a string pointer; this is immutable
+		printf("Chosen word: %s\n",chosenWord);
+		/* char *chosenWord = "APPLEPPPOO"; // temporary */
 		int lengthOfRandomWord = strlen(chosenWord);
 		printf("Length of Random Word = %d\n",lengthOfRandomWord);
 		int *mainIndices = malloc(sizeof(int) * lengthOfRandomWord);
@@ -45,7 +45,7 @@ int main() {
 		}
 		int *lastIndex = malloc(sizeof(int));
 		*lastIndex = 0;
-		
+		int noOfGusses = 0;
 		while(1) {
 			printf("\n---------------------BEGIN-FOR-A-WORD-------------------\n");
 			char chosenChar = takeLetterInput();
@@ -56,7 +56,14 @@ int main() {
 			printf("Welcome back to main function \n: ");
 		
 			int numberOfMatches = x[0]-1;
-			if(numberOfMatches == 1) printf("nothing matched");	
+			if(numberOfMatches == 0) {
+				printf("Incorrect guess!! \n");
+				printf("Stage = %d\n",++stage);
+				/* hangman(7); */
+
+			}
+
+
 			for (int i=1; i<=numberOfMatches;i++) {
 				printf("%d\t",x[i]);
 			}
@@ -71,9 +78,18 @@ int main() {
 			}	
 			printf("\n");
 			outputPrinter(chosenWord, mainIndices);
+			if(checkCorrectGuess(mainIndices,lengthOfRandomWord)) {
+				printf("Hurray!!!!!  the answer is correct.....\n")	;
+			}else {
+				printf("Answer not correct...again\n");
+			}
+			if(stage == 7) {
+				printf("-----------------------------GameOver-------------------------\n");
+				break;
+			}
+
 		}
-		// now i need to get the list which holds all the indeces that has been found out
-		
+
 	}
 	
 	return 0;

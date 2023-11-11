@@ -39,9 +39,9 @@ int *checkChar(char chosenChar, char *word) {
 	// printing the listing array
 	printf("\n--------printing the listing array------\n");
 
-/* 	for (int i =0; i<size; i++) { */
-/* 		printf("%d\n",foundIndices[i]); */	
-/* 	} */
+	for (int i =0; i<size; i++) {
+		printf("%d\n",foundIndices[i]);	
+	}
 	return foundIndices;
 
 
@@ -56,6 +56,7 @@ void addNewIndicesToMainIndices (int *mainIndices, int lengthofRandomWord, int *
 	printf("Number of matches = %d\n",numberofMatches);
 	printf("Length of Random Word = %d\n",lengthofRandomWord);
 	printf("The last index of main array is: %d\n",*lastIndex);
+	printf("HERE...");
 
 		for (int i=1; i<=numberofMatches;i++) {
 			printf("%d\t",x[i]);
@@ -89,9 +90,29 @@ printf("\nExecuting.....\n ");
 
 	}
 	
-printf("\nExecuting.....\n ");
+	printf("\nExecuting.....\n ");
 }
 
+
+int checkCorrectGuess(int *listings,int length) {
+
+	printf("Checking correctness of your answer...............\n");
+	for (int i = 0; i<length; i++) {
+
+	if(listings[i] == -1) {
+		printf("Answer not correct");
+		return 0;
+	}else{
+		if(i == length-1) {
+			printf("Answer is correct: ");
+			return 1;
+		}
+	}
+
+	}
+
+
+}
 
 
 
