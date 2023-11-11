@@ -118,7 +118,7 @@ int checkCorrectGuess(int *listings,int length) {
 void gameOver(int Score) {
 	printf("\n-----------------------------------------------------------\n");
 	printf("Your score is: %d\n",Score);
-	printf("\n-----------------------------------------------------------\n");
+	printf("-----------------------------------------------------------\n");
 
 }
 
@@ -136,7 +136,7 @@ int wannaPlayAgain() {
 			return 0;
 		}
 
-		}
+	}
 
 
 

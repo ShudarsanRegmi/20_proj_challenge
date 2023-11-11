@@ -49,8 +49,8 @@ int main() {
     int wannaPlay = 1;
 
     while (wannaPlay) {
-    int foundIndices[10];
-        int stage = 0;
+		int foundIndices[10];
+        int stage = 1;
         genedRanNo = genRandomNumber(MAX);
         char * chosenWord = words[genedRanNo]; // this is a string pointer; this is immutable
         printf("Chosen word: %s\n", chosenWord);
@@ -73,7 +73,7 @@ int main() {
             int * x = checkChar(chosenChar, chosenWord);
 
             printf("Welcome back to main function \n: ");
-
+				
             int numberOfMatches = x[0] - 1;
             if (numberOfMatches == 0) {
                 printf("Incorrect guess!! \n");
@@ -81,7 +81,7 @@ int main() {
                 /* hangman(7); */
 
             }
-
+		hangman(stage);
             for (int i = 1; i <= numberOfMatches; i++) {
                 printf("%d\t", x[i]);
             }
@@ -95,6 +95,8 @@ int main() {
             }
             printf("\n");
             outputPrinter(chosenWord, mainIndices);
+
+
             if (checkCorrectGuess(mainIndices, lengthOfRandomWord)) {
                 printf("Hurray!!!!!  the answer is correct.....\n");
                 Score = Score + 10;
@@ -109,11 +111,13 @@ int main() {
                 break;
 			}
 
+
 		}
 	// inner while loop close
 
 	
 		if (!wannaPlayAgain()) {
+			gameOver(Score);
 			break;
 		}else{
 			free(mainIndices);
