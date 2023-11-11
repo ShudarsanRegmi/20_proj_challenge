@@ -115,6 +115,28 @@ int checkCorrectGuess(int *listings,int length) {
 }
 
 
+void gameOver(int Score) {
+	printf("\n-----------------------------------------------------------\n");
+	printf("Your score is: %d\n",Score);
+	printf("\n-----------------------------------------------------------\n");
+
+}
+
+int wannaPlayAgain() {
+		char pa;
+		printf("Do you want to play again? ");
+		scanf("%c",&pa);
+		getchar();
+		pa = toupper(pa);
+		if(pa == 'Y') {
+			printf("Play again");
+			return 1;
+		}else{
+			printf("Don't wanna play.. \n");
+			return 0;
+		}
+
+		}
 
 
 
