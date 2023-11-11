@@ -39,6 +39,10 @@ int main() {
 		int lengthOfRandomWord = strlen(chosenWord);
 		printf("Length of Random Word = %d\n",lengthOfRandomWord);
 		int *mainIndices = malloc(sizeof(int) * lengthOfRandomWord);
+		// initializing maijnIndices with -1
+		for (int i=0;i<lengthOfRandomWord;i++) {
+			mainIndices[i] = -1;		
+		}
 		int *lastIndex = malloc(sizeof(int));
 		*lastIndex = 0;
 		
@@ -66,9 +70,9 @@ int main() {
 				printf("%d\t",mainIndices[i]);
 			}	
 			printf("\n");
-		}	
+			outputPrinter(chosenWord, mainIndices);
+		}
 		// now i need to get the list which holds all the indeces that has been found out
-			
 		
 	}
 	

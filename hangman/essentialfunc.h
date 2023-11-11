@@ -68,6 +68,31 @@ void addNewIndicesToMainIndices (int *mainIndices, int lengthofRandomWord, int *
 }
 
 
+void outputPrinter(const char *word, int indices[]) {
+
+printf("\nExecuting.....\n ");
+	
+
+	int outerbreak;
+	for(int i=0; i< strlen(word); i++) {
+		outerbreak = 0;
+	
+		for (int j=0;j<strlen(word);j++) {
+			if(i == indices[j]) {
+				printf(" %c ",word[i]);
+				outerbreak = 1;
+
+			}
+		}
+		if(outerbreak == 1) continue;
+		printf(" _ ");
+
+	}
+	
+printf("\nExecuting.....\n ");
+}
+
+
 
 
 
