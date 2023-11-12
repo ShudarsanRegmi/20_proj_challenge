@@ -50,6 +50,11 @@ int main() {
     while (wannaPlay) {
 		int foundIndices[10];
         int stage = 0;
+
+		char enteredCharacter[26];
+		char *enteredCharacterPtr = &enteredCharacter;
+		int *indexOfLastEnteredCharacter = 0;
+
         genedRanNo = genRandomNumber(MAX);
         char * chosenWord = words[genedRanNo]; // this is a string pointer; this is immutable
         /* char *chosenWord = "WATERMELON"; // temporary */
@@ -66,7 +71,7 @@ int main() {
         int noOfGusses = 0;
 
 
-		printf("\033[H\033[J");
+		/* printf("\033[H\033[J"); */
 		hangman(stage);
 		outputPrinter(chosenWord, mainIndices);
         while (1) {
@@ -74,8 +79,18 @@ int main() {
             char chosenChar = takeLetterInput();
 
             /* int x = checkChar(chosenWord,chosenChar); */
+
+			// check only if chosen char is being entered for the first time
+				
             int * x = checkChar(chosenChar, chosenWord);
 
+			printf("printing foundIndices: \n");
+			for(int i=0;i<x[0];i++) {
+				printf("%d\t",x[i]);
+			}
+			printf("\n");
+
+			// foundIndices is returned.. 
             /* printf("Welcome back to main function \n: "); */
 				
             int numberOfMatches = x[0] - 1;
@@ -94,6 +109,11 @@ int main() {
 
             addNewIndicesToMainIndices(mainIndices, lengthOfRandomWord, lastIndex, x, numberOfMatches);
 
+			printf("After adding new indices \n");
+			for(int i=0;i<lengthOfRandomWord;i++) {
+				printf("%d\t",mainIndices[i]);
+			}
+
             /* printf("\nIterating through the main list indices\n"); */
 
             /* for (int i = 0; i < lengthOfRandomWord; i++) { */
@@ -104,7 +124,7 @@ int main() {
 
 
 			// not sure if ths works in windows 
-			printf("\033[H\033[J");
+			/* printf("\033[H\033[J"); */
 			hangman(stage);
 			outputPrinter(chosenWord, mainIndices);
 

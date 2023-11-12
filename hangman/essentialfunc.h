@@ -27,6 +27,9 @@ int *checkChar(char chosenChar, char *word) {
 
 	for (int i=0;i<strlen(word);i++) {
 
+		// I need to check if the word was already entered
+			
+
 		if(word[i] == chosenChar) {
 			/* printf("matched Character: %c\n",chosenChar); */
 			/* printf("Found index:%d\n ",i); */
@@ -90,6 +93,9 @@ printf("\n-----------------------------------\n\n");
 
 	}
 printf("\n-----------------------------------\n");
+
+// duplicate entries can be removed from a list..
+// removing duplicate netry from the arrray is a good idea.. 
 	
 	/* printf("\nExecuting.....\n "); */
 }
