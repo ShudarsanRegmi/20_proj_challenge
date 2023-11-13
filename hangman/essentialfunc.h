@@ -7,7 +7,7 @@ char takeLetterInput();
 
 char takeLetterInput() {	
 	char mychar;
-	printf("\nEnter the character: ");
+	printf("\nGuess a letter:  ");
 	scanf("%c",&mychar);	
 	getchar();
 	/* printf("Captured Character: %c",mychar); */
@@ -136,16 +136,27 @@ int wannaPlayAgain() {
 		getchar();
 		pa = toupper(pa);
 		if(pa == 'Y') {
-			printf("Play again");
+			/* printf("Play again"); */
 			return 1;
 		}else{
-			printf("Don't wanna play.. \n");
+			/* printf("Don't wanna play.. \n"); */
 			return 0;
 		}
 
 	}
 
-
+int isalreadytaken(const char chosenchar, char *entered_char, int chosen_chars_length) {
+	// check if chosenchar is there in entered_char array or not
+	
+	for (int i=0;i<chosen_chars_length;i++) {
+		if(chosenchar == entered_char[i]) {
+			printf("Letter already entered..\n");
+			return 1;
+		}
+	} 
+	/* printf("Letter not entered..\n"); */
+	return 0;
+}
 
 
 
