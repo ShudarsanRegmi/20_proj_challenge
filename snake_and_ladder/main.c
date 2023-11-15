@@ -4,10 +4,12 @@
 #include <time.h>
 #include <string.h>
 
+
+
 int main() {
 		
 	int players_count;
-	srand(time(NULL));	
+	srand(time(NULL));
 
 
 	// enter the numbers of players which should be either 1 or 2 or 3 or 4
@@ -15,6 +17,7 @@ int main() {
 	do {
 		printf("Enter the number of players: ");
 		scanf("%d",&players_count);
+		getchar();
 	}while(players_count < 1 || players_count > 4);
 
 	// initialize the structure;
@@ -47,7 +50,7 @@ int main() {
 		strcpy(players[0].name,"Ram");
 		players[0].color = 'R';
 		players[0].pos = 0;
-		prayers[i].id = 0;
+		players[0].id = 0;
 
 	} // dev mode loop end
 	  //
@@ -59,16 +62,28 @@ int main() {
 	while(1) {
 		// generate random number between 1 and 6	
 		int player = loop_count % players_count;
-		printf("%s : Enter key to roll the dice \n", players[player]);
-		scanf("%d",&to_hold); // just to hold the screen
-		printf("You got: %d\n",roll_dice());
 
-		move_gotti(players[player],)
+		int ako = 0;
+		int total_ako = 0;
+		do {
+			printf("%s : Press Enter key to roll the dice:", players[player].name);
+			getchar();
+			ako = roll_dice();
+			total_ako = ako;
+			if(ako == 6) {
+				printf("Got 6 \n");
+				total_ako = ako + total_ako+ako;	
+			}
+		}while(ako == 6);
+
+
+		printf("Total ako = %d\n",total_ako);
+
+		/* move_gotti(players[player], total_ako); */
 		
-		moveGotti()
-		if ( count == 6)
-			break;
-		count++;	
+		/* if ( count == 6) */
+		/* 	break; */
+		/* count++; */	
 	}
 	// game loop ends
 
