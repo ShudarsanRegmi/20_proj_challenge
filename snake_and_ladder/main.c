@@ -25,7 +25,7 @@ int main() {
 
 	// ask the user details
 	//
-	int loop = 0;	
+	int loop = 1;	
 	if (loop) { // dev mode only
 	for (int i=0;i<players_count;i++) {
 		printf("\nEnter your name: ");
@@ -80,11 +80,15 @@ int main() {
 
 		printf("Total ako = %d\n",total_ako);
 
-		move_gotti(&players[player], total_ako);
+		int game_track = move_gotti(&players[player], total_ako);
 		
-		/* if ( count == 6) */
-		/* 	break; */
-		/* count++; */	
+		if(game_track != -1) {
+			printf("-----------------------------------------------------\n");
+			printf("Winner !! Winner !!: %s\n",players[player].name);
+			printf("-----------------------------------------------------\n");
+			break;
+		}
+		loop_count++;	
 	}
 	// game loop ends
 

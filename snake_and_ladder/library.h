@@ -14,6 +14,7 @@ struct Players {
 	int pos;
 };
 
+
 typedef struct Snakes {
 	int from;
 	int to;
@@ -87,6 +88,10 @@ int move_gotti(struct Players *p,  int step) {
 	printf("Step: %d\n",step);
 
 	int temp_pos = p->pos+step;	
+	if(temp_pos > 100) {
+		printf("You cannot move!!\n");
+		temp_pos = temp_pos-step;
+	}
 	int final_pos = temp_pos;	
 	// if temp_pos has got snake: i.e.  is temp_pos number there in snakes array
 	if(check_snake(temp_pos)) {
@@ -108,9 +113,17 @@ int move_gotti(struct Players *p,  int step) {
 
 	// change position
 	p->pos = final_pos;
+
+	if(final_pos == 100) {
+		printf("%s !! you won the game \n",p->name);
+		return p->id;
+
+	}else{
+		return -1;
+	}
+
+
 	printf("your new position: %d\n",p->pos);
 
-	
-	
 	//
 }
