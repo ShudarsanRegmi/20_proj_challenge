@@ -69,17 +69,18 @@ int main() {
 			printf("%s : Press Enter key to roll the dice:", players[player].name);
 			getchar();
 			ako = roll_dice();
-			total_ako = ako;
-			if(ako == 6) {
+			printf("ako = %d\n",ako);
+			total_ako = total_ako+ako;
+			if(ako == 6 ) {
 				printf("Got 6 \n");
-				total_ako = ako + total_ako+ako;	
 			}
+		
 		}while(ako == 6);
 
 
 		printf("Total ako = %d\n",total_ako);
 
-		/* move_gotti(players[player], total_ako); */
+		move_gotti(&players[player], total_ako);
 		
 		/* if ( count == 6) */
 		/* 	break; */
