@@ -63,7 +63,7 @@ int get_chere_pachi_ko_pos(int mukh_ko_number) {
 	for(int i=0;i<NO_OF_SNAKES;i++) {
 		if(mukh_ko_number == snakes[i].from) {
 			printf("Chhherrrrrrrrrrrrroooooooooooooooooooooooooooooooooooooooooo..\n");
-			printf("Chhering to: %d\n",snakes[i].to);
+			/* printf("Chhering to: %d\n",snakes[i].to); */
 			return snakes[i].to;
 		}
 
@@ -74,18 +74,18 @@ int get_chere_pachi_ko_pos(int mukh_ko_number) {
 int get_chade_pachi_ko_pos(int tala_ko_number) {
 	for(int i=0;i<NO_OF_LADDERS;i++) {
 		if(tala_ko_number == ladders[i].from) {
-			printf("Sidhi veteo.------------------------------------.\n");
-			printf("Chhadding to: %d\n",ladders[i].to);
+			/* printf("Sidhi veteo.------------------------------------.\n"); */
+			/* printf("Chhadding to: %d\n",ladders[i].to); */
 			return ladders[i].to;
 		}
 
 	}
 }
 int move_gotti(struct Players *p,  int step) {
-	printf("----move_gotti()------\n");
-	printf("Turn: %s\n",p->name);
+	/* printf("----move_gotti()------\n"); */
+	/* printf("Turn: %s\n",p->name); */
 	printf("Current Position: %d\n",p->pos);
-	printf("Step: %d\n",step);
+	/* printf("Step: %d\n",step); */
 
 	int temp_pos = p->pos+step;	
 	if(temp_pos > 100) {
@@ -95,9 +95,9 @@ int move_gotti(struct Players *p,  int step) {
 	int final_pos = temp_pos;	
 	// if temp_pos has got snake: i.e.  is temp_pos number there in snakes array
 	if(check_snake(temp_pos)) {
-		printf("You got the snake\n");
+		printf("Shitt!! You got the snake\n");
 		final_pos = get_chere_pachi_ko_pos(temp_pos);	
-		printf("Final Pos: %d\n",final_pos);
+		printf("Position: %d\n",final_pos);
 		
 	}
 
@@ -105,9 +105,9 @@ int move_gotti(struct Players *p,  int step) {
 	// if temp_pos has got ladder: i.e. is temp_pos number there in ladder array
 	
 	if(check_ladder(temp_pos)) {
-		printf("You got the ladder");
+		printf("Whoa!! You got the ladder");
 		final_pos = get_chade_pachi_ko_pos(temp_pos);
-		printf("Final Pos: %d\n",final_pos);
+		/* printf("Final Pos: %d\n",final_pos); */
 		
 	}
 
@@ -125,5 +125,15 @@ int move_gotti(struct Players *p,  int step) {
 
 	printf("your new position: %d\n",p->pos);
 
+
 	//
 }
+
+void show_score_card(struct Players players[],int length) {
+	printf("----------Status---------------------\n");
+	for (int i = 0; i<length; i++) {
+		printf("%s: %d\n", players[i].name, players[i].pos)	;
+	}
+	printf("---------------------------------------------\n");
+}
+
