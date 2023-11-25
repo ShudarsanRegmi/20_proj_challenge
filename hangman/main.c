@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 #include <time.h>
+
 #include "hangman.h"
-#include "random.h"
 #include "essentialfunc.h"
 
 // constants
