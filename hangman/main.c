@@ -5,7 +5,6 @@
 
 #include "hangman.h"
 #include "essentialfunc.h"
-
 // constants
 #define MAX 19
 
@@ -13,32 +12,11 @@ int main() {
 
     //Variables Initializaiton 
     int Score = 0;
-    char * words[] = {
-        "APPLE",
-        "ORANGE",
-        "BANANA",
-        "STRAWBERRY",
-        "GRAPE",
-        "MELON",
-        "WATERMELON",
-        "PEACH",
-        "NECTARINE",
-        "PLUM",
-        "CHERRY",
-        "MANGO",
-        "KIWI",
-        "PINEAPPLE",
-        "AVOCADO",
-        "LEMON",
-        "LIME",
-        "ORANGE",
-        "GRAPEFRUIT",
-        "TRANGERINE",
-        "CLEMENTINE"
-    };
+    char * words[] = { "APPLE", "ORANGE", "BANANA", "STRAWBERRY", "GRAPE", "MELON", "WATERMELON", "PEACH", "NECTARINE", "PLUM", "CHERRY", "MANGO", "KIWI", "PINEAPPLE", "AVOCADO", "LEMON", "LIME", "ORANGE", "GRAPEFRUIT", "TRANGERINE", "CLEMENTINE" };	
 
-    /* char *words[50] = {"ram","shyam","\0"}; */
 
+
+    //const char words[] = animals[];
     int genedRanNo;
 
     srand(time(NULL));
