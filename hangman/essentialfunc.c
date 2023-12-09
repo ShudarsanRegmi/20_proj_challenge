@@ -141,7 +141,7 @@ int wannaPlayAgain() {
 		scanf("%c",&pa);
 		getchar();
 		pa = toupper(pa);
-		if(pa == 'Y') {
+		if(pa == 'Y' || pa == 'y') {
 			/* printf("Play again"); */
 			return 1;
 		}else{
