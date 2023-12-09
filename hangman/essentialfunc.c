@@ -7,8 +7,9 @@
 
 char takeLetterInput() {	
 	char mychar;
-	printf("\nGuess a letter:  ");
+	printf("\nGuess a letter(A-Z) (fruits):  ");
 	scanf("%c",&mychar);	
+	mychar = toupper(mychar);
 	getchar();
 	/* printf("Captured Character: %c",mychar); */
 	return mychar;
